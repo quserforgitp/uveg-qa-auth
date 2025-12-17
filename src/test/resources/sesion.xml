@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite Inicio de Sesión" parallel="tests" thread-count="1">
+
+    <test name="- Credenciales Correctas">
+        <classes>
+            <class name="org.uveg.IniciarSesion_CredencialesCorrectas"/>
+        </classes>
+    </test>
+
+    <test name="- Correo Incorrecto">
+        <classes>
+            <class name="org.uveg.IniciarSesion_CorreoIncorrecto"/>
+        </classes>
+    </test>
+
+</suite>
