@@ -21,12 +21,14 @@ import org.testng.annotations.Test;
 
 public class IniciarSesion_CredencialesCorrectas extends Ambiente {
 
-    WebDriver driver;
+    private WebDriver driver;
+    private ComandosSelenium wrapper;
+
     @Parameters("navegador")
     @BeforeTest
     public void setUp(final String navegador) {
         driver = iniciarNavegador(navegador);
-        driver.manage().window().maximize();
+        wrapper = new ComandosSelenium(driver);
         driver.get("https://practice.automationtesting.in/my-account/");
     }
 
@@ -36,18 +38,19 @@ public class IniciarSesion_CredencialesCorrectas extends Ambiente {
         // Credenciales
         final String validUsername = "this-a-testmail@mail.com";
         final String validPassword = "Pp*7C5Ohcr8JcnQM";
-        // Elementos de la página
-        WebElement campoUsername = driver.findElement(By.id("username"));
-        WebElement campoPassword = driver.findElement(By.id("password"));
-        WebElement botonLogin = driver.findElement(By.name("login"));
+        // Localizadores de Elementos de la página
+        By campoUsername = By.id("username");
+        By campoPassword = By.id("password");
+        By botonLogin = By.name("login");
+        By linkCerrarSesion = By.linkText("Sign out");
 
         // ===== Act =====
-        campoUsername.sendKeys(validUsername);
-        campoPassword.sendKeys(validPassword);
-        botonLogin.click();
+        wrapper.escribir(campoUsername, validUsername);
+        wrapper.escribir(campoPassword, validPassword);
+        wrapper.click(botonLogin);
 
         // ===== Assert =====
-        boolean existeLogout = !driver.findElements(By.linkText("Sign out")).isEmpty();
+        boolean existeLogout = wrapper.existeElemento(linkCerrarSesion);
         Assert.assertTrue(existeLogout, "No se pudo iniciar sesión con credenciales válidas");
     }
 

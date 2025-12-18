@@ -21,13 +21,14 @@ import org.testng.annotations.Test;
 
 public class IniciarSesion_CorreoIncorrecto extends Ambiente {
 
-    WebDriver driver;
+    private WebDriver driver;
+    private ComandosSelenium wrapper;
 
     @Parameters("navegador")
     @BeforeTest
     public void setUp(final String navegador) {
         driver = iniciarNavegador(navegador);
-        driver.manage().window().maximize();
+        wrapper = new ComandosSelenium(driver);
         driver.get("https://practice.automationtesting.in/my-account/");
     }
 
@@ -37,26 +38,26 @@ public class IniciarSesion_CorreoIncorrecto extends Ambiente {
         // Credenciales
         final String invalidUsername = "this-92ddmail@mail.com";
         final String validPassword = "Pp*7C5Ohcr8JcnQM";
+        // Localizadores de Elementos de la página
+        By campoUsername = By.id("username");
+        By campoPassword = By.id("password");
+        By botonLogin = By.name("login");
+        By mensajeError = By.cssSelector(".woocommerce-error li");
 
         final String textoEsperado = "Error: A user could not be found with this email address.";
-        // Elementos de la página
-        WebElement campoUsername = driver.findElement(By.id("username"));
-        WebElement campoPassword = driver.findElement(By.id("password"));
-        WebElement botonLogin = driver.findElement(By.name("login"));
 
         // ===== Act =====
-        campoUsername.sendKeys(invalidUsername);
-        campoPassword.sendKeys(validPassword);
-        botonLogin.click();
+        wrapper.escribir(campoUsername, invalidUsername);
+        wrapper.escribir(campoPassword, validPassword);
+        wrapper.click(botonLogin);
 
         // ===== Assert =====
         // Se muestra el mensaje de error
-        boolean existeMensajeError = !driver.findElements(By.cssSelector(".woocommerce-error li")).isEmpty();
+        boolean existeMensajeError = wrapper.existeElemento(mensajeError);
         Assert.assertTrue(existeMensajeError, "No apareció el mensaje de error al introducir un correo inválido");
 
         // El mensaje de error tiene el texto esperado
-        WebElement mensajeError = driver.findElement(By.cssSelector(".woocommerce-error li"));
-        final String textoReal = mensajeError.getText();
+        final String textoReal = wrapper.obtenerTexto(mensajeError);
         Assert.assertEquals(textoReal, textoEsperado, "El mensaje de error no tenía el texto esperado");
     }
 
