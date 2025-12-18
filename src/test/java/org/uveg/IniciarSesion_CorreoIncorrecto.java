@@ -37,11 +37,6 @@ public class IniciarSesion_CorreoIncorrecto extends Ambiente {
         // Credenciales
         final String invalidUsername = "this-92ddmail@mail.com";
         final String validPassword = "Pp*7C5Ohcr8JcnQM";
-        // Localizadores de Elementos de la página
-        By campoUsername = By.id("username");
-        By campoPassword = By.id("password");
-        By botonLogin = By.name("login");
-        By mensajeError = By.cssSelector(".woocommerce-error li");
 
         final String textoEsperado = "Error: A user could not be found with this email address.";
 
