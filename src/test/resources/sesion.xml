@@ -1,13 +1,15 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite Inicio de Sesión" parallel="tests" thread-count="1">
+<suite name="Suite Inicio de Sesión">
 
-    <test name="- Credenciales Correctas">
+    <test name="Credenciales Correctas">
+        <parameter name="navegador" value="chrome"/>
         <classes>
             <class name="org.uveg.IniciarSesion_CredencialesCorrectas"/>
         </classes>
     </test>
 
-    <test name="- Correo Incorrecto">
+    <test name="Correo Incorrecto">
+        <parameter name="navegador" value="firefox"/>
         <classes>
             <class name="org.uveg.IniciarSesion_CorreoIncorrecto"/>
         </classes>

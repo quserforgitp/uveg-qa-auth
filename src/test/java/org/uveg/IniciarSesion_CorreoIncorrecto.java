@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 /*
@@ -22,9 +23,10 @@ public class IniciarSesion_CorreoIncorrecto extends Ambiente {
 
     WebDriver driver;
 
+    @Parameters("navegador")
     @BeforeTest
-    public void setUp() {
-        driver = iniciarNavegador("firefox");
+    public void setUp(final String navegador) {
+        driver = iniciarNavegador(navegador);
         driver.manage().window().maximize();
         driver.get("https://practice.automationtesting.in/my-account/");
     }
