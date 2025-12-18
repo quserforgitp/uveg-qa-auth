@@ -3,7 +3,6 @@ package org.uveg;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -19,13 +18,13 @@ import org.testng.annotations.Test;
     Fecha: 17/12/2025
 */
 
-public class IniciarSesion_CredencialesCorrectas {
+public class IniciarSesion_CredencialesCorrectas extends Ambiente {
 
     WebDriver driver;
 
     @BeforeTest
     public void setUp() {
-        driver = new ChromeDriver();
+        driver = iniciarNavegador("chrome");
         driver.manage().window().maximize();
         driver.get("https://practice.automationtesting.in/my-account/");
     }
@@ -53,7 +52,7 @@ public class IniciarSesion_CredencialesCorrectas {
 
     @AfterTest
     public void tearDown() {
-        driver.quit();
+        cerrarNavegador();
     }
 }
 
