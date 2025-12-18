@@ -19,15 +19,15 @@ import org.testng.annotations.Test;
 
 public class IniciarSesion_CredencialesCorrectas extends Ambiente {
 
-    private WebDriver driver;
     private ComandosSelenium wrapper;
 
     @Parameters("navegador")
     @BeforeTest
     public void setUp(final String navegador) {
-        driver = iniciarNavegador(navegador);
+        WebDriver driver = iniciarNavegador(navegador);
         wrapper = new ComandosSelenium(driver);
-        driver.get("https://practice.automationtesting.in/my-account/");
+        PasosEstandar pasos = new PasosEstandar(driver);
+        pasos.navegarPaginaPrueba();
     }
 
     @Test(testName = "debería inciar sesión y mostrar opción de Log out")
