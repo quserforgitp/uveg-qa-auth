@@ -2,7 +2,6 @@ package org.uveg;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -47,17 +46,17 @@ public class IniciarSesion_CorreoIncorrecto extends Ambiente {
         final String textoEsperado = "Error: A user could not be found with this email address.";
 
         // ===== Act =====
-        wrapper.escribir(campoUsername, invalidUsername);
-        wrapper.escribir(campoPassword, validPassword);
-        wrapper.click(botonLogin);
+        wrapper.escribir(LoginLocators.CAMPO_USERNAME, invalidUsername);
+        wrapper.escribir(LoginLocators.CAMPO_PASSWORD, validPassword);
+        wrapper.click(LoginLocators.BOTON_LOGIN);
 
         // ===== Assert =====
         // Se muestra el mensaje de error
-        boolean existeMensajeError = wrapper.existeElemento(mensajeError);
+        boolean existeMensajeError = wrapper.existeElemento(LoginLocators.MENSAJE_ERROR);
         Assert.assertTrue(existeMensajeError, "No apareció el mensaje de error al introducir un correo inválido");
 
         // El mensaje de error tiene el texto esperado
-        final String textoReal = wrapper.obtenerTexto(mensajeError);
+        final String textoReal = wrapper.obtenerTexto(LoginLocators.MENSAJE_ERROR);
         Assert.assertEquals(textoReal, textoEsperado, "El mensaje de error no tenía el texto esperado");
     }
 

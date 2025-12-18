@@ -1,8 +1,6 @@
 package org.uveg;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -38,19 +36,14 @@ public class IniciarSesion_CredencialesCorrectas extends Ambiente {
         // Credenciales
         final String validUsername = "this-a-testmail@mail.com";
         final String validPassword = "Pp*7C5Ohcr8JcnQM";
-        // Localizadores de Elementos de la página
-        By campoUsername = By.id("username");
-        By campoPassword = By.id("password");
-        By botonLogin = By.name("login");
-        By linkCerrarSesion = By.linkText("Sign out");
 
         // ===== Act =====
-        wrapper.escribir(campoUsername, validUsername);
-        wrapper.escribir(campoPassword, validPassword);
-        wrapper.click(botonLogin);
+        wrapper.escribir(LoginLocators.CAMPO_USERNAME, validUsername);
+        wrapper.escribir(LoginLocators.CAMPO_PASSWORD, validPassword);
+        wrapper.click(LoginLocators.BOTON_LOGIN);
 
         // ===== Assert =====
-        boolean existeLogout = wrapper.existeElemento(linkCerrarSesion);
+        boolean existeLogout = wrapper.existeElemento(LoginLocators.LINK_LOGOUT);
         Assert.assertTrue(existeLogout, "No se pudo iniciar sesión con credenciales válidas");
     }
 
