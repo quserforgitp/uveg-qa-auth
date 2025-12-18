@@ -4,14 +4,14 @@
     <test name="Credenciales Correctas">
         <parameter name="navegador" value="chrome"/>
         <classes>
-            <class name="org.uveg.IniciarSesion_CredencialesCorrectas"/>
+            <class name="org.uveg.tests.IniciarSesion_CredencialesCorrectas"/>
         </classes>
     </test>
 
     <test name="Correo Incorrecto">
         <parameter name="navegador" value="firefox"/>
         <classes>
-            <class name="org.uveg.IniciarSesion_CorreoIncorrecto"/>
+            <class name="org.uveg.tests.IniciarSesion_CorreoIncorrecto"/>
         </classes>
     </test>
 

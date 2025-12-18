@@ -1,4 +1,4 @@
-package org.uveg;
+package org.uveg.tests;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -6,6 +6,10 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import org.uveg.ambiente.Ambiente;
+import org.uveg.wrapper.ComandosSelenium;
+import org.uveg.locators.LoginLocators;
+import org.uveg.helpers.PasosEstandar;
 
 /*
     Universidad: Universidad Virtual del Estado de Guanajuato

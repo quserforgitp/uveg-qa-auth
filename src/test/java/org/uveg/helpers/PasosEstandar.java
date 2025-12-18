@@ -1,4 +1,4 @@
-package org.uveg;
+package org.uveg.helpers;
 
 import org.openqa.selenium.WebDriver;
 

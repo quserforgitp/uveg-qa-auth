@@ -1,4 +1,4 @@
-package org.uveg;
+package org.uveg.wrapper;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

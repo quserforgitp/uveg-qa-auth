@@ -1,4 +1,4 @@
-package org.uveg;
+package org.uveg.locators;
 
 import org.openqa.selenium.By;
 
