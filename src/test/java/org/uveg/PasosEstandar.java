@@ -1,8 +1,6 @@
 package org.uveg;
 
 import org.openqa.selenium.WebDriver;
-import org.uveg.LoginLocators;
-import org.uveg.ComandosSelenium;
 
 /*
     PasosEstandar
